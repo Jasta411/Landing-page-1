@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<meta name="description" content="Jacinto Dev — Sites simples e rápidos para o seu negócio crescer online em Moçambique. Landing pages, atualização de conteúdo e consultoria digital.">
+<meta name="author" content="Jacinto Dev">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (partilha em redes sociais) -->
+<meta property="og:title" content="Jacinto Dev | Criação de Sites">
+<meta property="og:description" content="Sites simples e rápidos para o seu negócio crescer online em Moçambique.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_MZ">
+
+<!-- Favicon (emoji SVG inline) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+
+<title>Jacinto Dev | Criação de Sites</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.6;
+}
+
+/* ========== CABEÇALHO ========== */
+header{
+    background:#0d6efd;
+    color:#fff;
+    text-align:center;
+    padding:70px 20px;
+}
+
+header h1{
+    font-size:2.5rem;
+}
+
+header p{
+    margin-top:15px;
+}
+
+/* ========== NAVEGAÇÃO ========== */
+nav{
+    background:#083b8a;
+    text-align:center;
+    padding:15px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:opacity 0.2s;
+}
+
+nav a:hover,
+nav a:focus{
+    opacity:0.8;
+    outline:2px solid #fff;
+    outline-offset:3px;
+}
+
+/* ========== SECÇÕES ========== */
+section{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h2{
+    color:#0d6efd;
+    margin-bottom:20px;
+}
+
+/* ========== SCROLL REVEAL ========== */
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce){
+    .reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+}
+
+/* ========== CARDS ========== */
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    flex:1;
+    min-width:250px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    transition:transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+
+.card h3{
+    color:#083b8a;
+    margin-bottom:10px;
+}
+
+/* ========== FORMULÁRIO ========== */
+form{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-width:500px;
+    margin-top:20px;
+}
+
+form label{
+    font-weight:bold;
+    color:#083b8a;
+    margin-bottom:6px;
+    margin-top:10px;
+    font-size:0.95rem;
+    letter-spacing:0.3px;
+}
+
+form label:first-child{
+    margin-top:0;
+}
+
+form input,
+form textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:1rem;
+    font-family:inherit;
+    margin-bottom:10px;
+}
+
+form input:focus,
+form textarea:focus{
+    outline:2px solid #0d6efd;
+    border-color:#0d6efd;
+}
+
+form textarea{
+    resize:vertical;
+    min-height:100px;
+}
+
+/* Botão CTA - cores quentes */
+form button{
+    background:linear-gradient(135deg, #ff512f, #f09819);
+    color:#fff;
+    border:none;
+    padding:16px;
+    border-radius:8px;
+    font-size:1.05rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    box-shadow:0 6px 16px rgba(240,89,15,.4);
+    letter-spacing:0.3px;
+}
+
+form button:hover,
+form button:focus{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 10px 22px rgba(240,89,15,.55);
+    outline:2px solid #ff512f;
+    outline-offset:2px;
+}
+
+form button:disabled{
+    opacity:0.7;
+    cursor:not-allowed;
+    transform:none;
+}
+
+/* Mensagem de feedback do formulário */
+.form-feedback{
+    margin-top:12px;
+    padding:12px;
+    border-radius:6px;
+    font-weight:bold;
+    display:none;
+}
+
+.form-feedback.show{
+    display:block;
+}
+
+.form-feedback.success{
+    background:#d1f7dc;
+    color:#146c2e;
+    border:1px solid #2ecc71;
+}
+
+.form-feedback.error{
+    background:#fde2e2;
+    color:#9c1c1c;
+    border:1px solid #e74c3c;
+}
+
+/* ========== RODAPÉ ========== */
+footer{
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+/* ========== BOTÃO WHATSAPP ========== */
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#25D366;
+    color:#fff;
+    padding:15px 18px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+    transition:background 0.2s, transform 0.2s;
+    z-index:1000;
+}
+
+.whatsapp:hover,
+.whatsapp:focus{
+    background:#1ebe5d;
+    transform:scale(1.05);
+    outline:2px solid #fff;
+    outline-offset:2px;
+}
+
+/* ========== DARK MODE ========== */
+@media (prefers-color-scheme:dark){
+    body{
+        background:#1a1a2e;
+        color:#e0e0e0;
+    }
+
+    header{
+        background:#0b5ed7;
+    }
+
+    nav{
+        background:#051f4a;
+    }
+
+    .card{
+        background:#222831;
+        box-shadow:0 2px 8px rgba(0,0,0,.5);
+    }
+
+    .card h3{
+        color:#6ea8fe;
+    }
+
+    h2{
+        color:#6ea8fe;
+    }
+
+    form label{
+        color:#6ea8fe;
+    }
+
+    form input,
+    form textarea{
+        background:#2a2a3e;
+        border-color:#444;
+        color:#e0e0e0;
+    }
+
+    form input:focus,
+    form textarea:focus{
+        outline-color:#6ea8fe;
+        border-color:#6ea8fe;
+    }
+
+    form button{
+        background:linear-gradient(135deg, #ff512f, #f09819);
+        box-shadow:0 6px 18px rgba(240,89,15,.55);
+    }
+
+    .form-feedback.success{
+        background:#153d24;
+        color:#7be7a0;
+        border-color:#2ecc71;
+    }
+
+    .form-feedback.error{
+        background:#3d1515;
+        color:#f5a3a3;
+        border-color:#e74c3c;
+    }
+
+    footer{
+        background:#111;
+    }
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width:600px){
+    header h1{
+        font-size:1.8rem;
+    }
+
+    nav a{
+        display:inline-block;
+        margin:5px 10px;
+    }
+
+    .whatsapp{
+        padding:12px 15px;
+        font-size:0.9rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Jacinto Dev</h1>
+    <p>Sites simples e rápidos para o seu negócio crescer online.</p>
+</header>
+
+<nav aria-label="Navegação principal">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<main>
+
+<section id="sobre" class="reveal">
+    <h2>Sobre</h2>
+    <p>
+        Sou estudante de programação web e ajudo pequenos negócios em Moçambique
+        a terem presença online com sites simples, rápidos e acessíveis —
+        sem complicação, direto ao ponto.
+    </p>
+</section>
+
+<section id="servicos" class="reveal">
+    <h2>Serviços</h2>
+
+    <div class="cards">
+        <article class="card">
+            <h3>Landing Page Simples</h3>
+            <p>Uma página com informações do seu negócio, serviços e botão direto para WhatsApp.</p>
+        </article>
+
+        <article class="card">
+            <h3>Atualização de Conteúdo</h3>
+            <p>Mudança de preços, fotos, textos ou informações de contacto sempre que precisar.</p>
+        </article>
+
+        <article class="card">
+            <h3>Consultoria Digital</h3>
+            <p>Ajudo a organizar a presença do seu negócio no WhatsApp, Facebook e Instagram.</p>
+        </article>
+    </div>
+</section>
+
+<section id="contacto" class="reveal">
+    <h2>Contacto</h2>
+
+    <p><strong>Telefone:</strong> +258 86 886 1381</p>
+    <p><strong>Email:</strong> jasta.siga@gmail.com</p>
+    <p><strong>Localização:</strong> Moçambique</p>
+
+    <form id="contactForm" action="https://formspree.io/f/xnpaqaeb" method="POST">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Como posso ajudar?" required></textarea>
+
+        <button type="submit" id="submitBtn">Enviar Mensagem</button>
+
+        <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+    </form>
+</section>
+
+</main>
+
+<footer>
+    <p>&copy; <span id="ano"></span> Jacinto Dev. Todos os direitos reservados.</p>
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/258868861381"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Falar no WhatsApp">
+   💬 WhatsApp
+</a>
+
+<!-- Ano dinâmico no copyright -->
+<script>
+document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
+
+<!-- Scroll Reveal -->
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+revealEls.forEach(el => observer.observe(el));
+</script>
+
+<!-- Envio do formulário com feedback visual -->
+<script>
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const feedback = document.getElementById('formFeedback');
+
+form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'A enviar...';
+    feedback.className = 'form-feedback';
+    feedback.textContent = '';
+
+    try{
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if(response.ok){
+            feedback.textContent = 'Mensagem enviada com sucesso! Entraremos em contacto em breve.';
+            feedback.classList.add('show', 'success');
+            form.reset();
+        } else {
+            throw new Error('Falha no envio');
+        }
+    } catch(err){
+        feedback.textContent = 'Não foi possível enviar. Tente novamente ou fale connosco pelo WhatsApp.';
+        feedback.classList.add('show', 'error');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Mensagem';
+    }
+});
+</script>
+
+</body>
+</html>
